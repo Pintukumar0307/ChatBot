@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <style>
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .message {
+            margin-bottom: 10px;
+        }
+        .user-message {
+            color: blue;
+        }
+        .bot-message {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chatbot</h1>
+        <div id="chat"></div>
+        <input type="text" id="user-input" placeholder="Enter your message..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById("user-input").value;
+            document.getElementById("user-input").value = "";
+
+            if (userInput.trim() !== "") {
+                displayMessage(userInput, "user-message");
+
+                // Make API call to chatbot endpoint
+                fetch("/chatbot", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ text: userInput })
+                })
+            
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    var botResponse = data.response;
+                    displayMessage(botResponse, "bot-message");
+                })
+                .catch(function(error) {
+                    console.log("Error:", error);
+                });
+            }
+        }
+
+        function displayMessage(message, className) {
+            var chatDiv = document.getElementById("chat");
+            var messageDiv = document.createElement("div");
+            messageDiv.className = "message " + className;
+            messageDiv.innerHTML = message;
+            chatDiv.appendChild(messageDiv);
+            chatDiv.scrollTop = chatDiv.scrollHeight;
+        }
+    </script>
+</body>
+</html>
