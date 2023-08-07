@@ -1,0 +1,75 @@
+.App {
+    text-align: center;
+    width: 30%;
+    border: solid 1px red;
+    height: 100%;
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+    height: 60vh;
+    overflow-y: auto;
+    margin-bottom: 10px;
+  }
+  
+  .chat-container div {
+    background-color: #f1f0f0;
+    color: #333;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    max-width: 80%;
+  }
+  
+  .chat-container .user {
+    align-self: flex-end;
+    background-color: #3f51b5;
+    color: white;
+  }
+  
+  .chat-container .user p {
+    text-align: right;
+  }
+  
+  .chat-container .chatbot {
+    align-self: flex-start;
+  }
+  
+  input[type="text"] {
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+  }
+  
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
